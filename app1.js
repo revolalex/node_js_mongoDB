@@ -3,11 +3,13 @@ const fs = require("fs").promises;
 const url = "mongodb://localhost:27017";
 
 const main = async () => {
-  let countryName = await fs.readFile("./country_names.json");
-  let countryNameParse = JSON.parse(countryName);
+  const countryName = await fs.readFile("./country_names.json");
+  const countryNameParse = JSON.parse(countryName);
 
-  let client = await MongoCLient.connect(url, { useUnifiedTopology: true });
-  let dataBase = client.db("Country");
+  const client = await MongoCLient.connect(url, { useUnifiedTopology: true });
+  const dataBase = client.db("Country");
+
+
   try {
     for (let index = 0; index < countryNameParse.length; index++) {
       await dataBase
@@ -20,11 +22,5 @@ const main = async () => {
     console.log("!==>  Succes Country Name has been created  <==!");
     client.close();
   }
-
-  // let stopClient = () => {
-  //   client.close();
-  // };
-
-  // setTimeout(stopClient, 1500);
 };
 main();
