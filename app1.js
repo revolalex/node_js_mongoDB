@@ -8,16 +8,23 @@ const main = async () => {
 
   let client = await MongoCLient.connect(url, { useUnifiedTopology: true });
   let dataBase = client.db("Country");
-
-  for (let index = 0; index < countryNameParse.length; index++) {
-    dataBase
-      .collection("country_names")
-      .insertOne({ name: countryNameParse[index] });
-  }
-  let stopClient = () => {
+  try {
+    for (let index = 0; index < countryNameParse.length; index++) {
+      await dataBase
+        .collection("country_names")
+        .insertOne({ name: countryNameParse[index] });
+    }
+  } catch (error) {
+    console.log(error);
+  } finally {
+    console.log("!==>  Succes Country Name has been created  <==!");
     client.close();
-  };
-  console.log("!==>  Succes Country Name has been created  <==!");
-  setTimeout(stopClient, 1500);
+  }
+
+  // let stopClient = () => {
+  //   client.close();
+  // };
+
+  // setTimeout(stopClient, 1500);
 };
 main();
