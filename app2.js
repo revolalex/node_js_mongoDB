@@ -20,7 +20,7 @@ const main = async l => {
     } catch(e){
         console.log(e);
     } finally{
-        console.log("!==>  Succes  <==!");
+        console.log("!==>  Succes Country Full Data has been created  <==!");
         client.close();
     }
     

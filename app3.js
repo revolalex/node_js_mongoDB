@@ -19,74 +19,52 @@ const main = async () => {
   let database = connect.db("Country");
 
   try {
-    //Europe
-    let europeRegion = await database
-      .collection("country_full_data")
-      .find({ region: "Europe" })
-      .toArray();
-    database.collection("Europe").insertMany(europeRegion);
+    // Region ----------------------------------------------------------
+    // -----------------------------------------------------------------
+    let addregion = async (region) => {
+      try {
+        let regionToAdd = await database
+          .collection("country_full_data")
+          .find({ region: region })
+          .toArray();
+        database.collection(region).insertMany(regionToAdd);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-    // Africa
-    let africaRegion = await database
-      .collection("country_full_data")
-      .find({ region: "Africa" })
-      .toArray();
-    database.collection("Africa").insertMany(africaRegion);
+    let arrayOfRegion = ["Europe", "Africa", "Asia", "Oceania", "Polar"];
 
-    // Asia
-    let asiaRegion = await database
-      .collection("country_full_data")
-      .find({ region: "Asia" })
-      .toArray();
-    database.collection("Asia").insertMany(asiaRegion);
+    for (const region of arrayOfRegion) {
+      await addregion(region);
+    }
 
-    // Oceania
-    let oceaniaRegion = await database
-      .collection("country_full_data")
-      .find({ region: "Oceania" })
-      .toArray();
-    database.collection("Oceania").insertMany(oceaniaRegion);
-
-    // Polar
-    let polarRegion = await database
-      .collection("country_full_data")
-      .find({ region: "Polar" })
-      .toArray();
-    database.collection("Polar").insertMany(polarRegion);
-
-    // South America
-    let southAmericaSubregion = await database
-      .collection("country_full_data")
-      .find({ subregion: "South America" })
-      .toArray();
-    database.collection("South America").insertMany(southAmericaSubregion);
-
-    // Caribbean
-    let caribbeanSubregion = await database
-      .collection("country_full_data")
-      .find({ subregion: "Caribbean" })
-      .toArray();
-    database.collection("Caribbean").insertMany(caribbeanSubregion);
-
-    // Northern America
-    let northernAmericaSubregion = await database
-      .collection("country_full_data")
-      .find({ subregion: "Northern America" })
-      .toArray();
-    database
-      .collection("Northern America")
-      .insertMany(northernAmericaSubregion);
-
-    // Central America
-    let centralAmericaSubregion = await database
-      .collection("country_full_data")
-      .find({ subregion: "Central America" })
-      .toArray();
-    database.collection("Central America").insertMany(centralAmericaSubregion);
+    // subRegion -------------------------------------------------------
+    // -----------------------------------------------------------------
+    let addsubregion = async (subregion) => {
+      try {
+        let subregionToAdd = await database
+          .collection("country_full_data")
+          .find({ subregion: subregion })
+          .toArray();
+        database.collection(subregion).insertMany(subregionToAdd);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    let arrayOfsubregion = [
+      "South America",
+      "Caribbean",
+      "Northern America",
+      "Central America",
+    ];
+    for (const subregion of arrayOfsubregion) {
+      await addsubregion(subregion);
+    }
   } catch (error) {
     console.log(error);
   } finally {
-    console.log("!==>  Succes Region and SubRegion has been created <==!");
+    console.log("!==>  Succes Region and SubRegion has been created  <==!");
     connect.close();
   }
 };
