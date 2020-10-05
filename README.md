@@ -1,3 +1,9 @@
+![](https://img.shields.io/badge/made%20with-javaScript-yellow?logo=javaScript).
+![](https://img.shields.io/badge/made%20with-node.js-success?logo=node.js).
+![](https://img.shields.io/badge/made%20with-mongoDB-blue?logo=mongoDB).
+
+<img src="https://img.shields.io/badge/Express-succes.svg" alt="Express">. 
+
 
 # Project Name : node_js_mongoDB
 > This project's main goal was to learn MongoDB and practice async-await.
@@ -49,11 +55,22 @@ Api used in the project: link: https://restcountries.eu/
  
  
 ## Status
-Project is:  _finished_
+Project is:  _Finish_
 
 
-## Contact
-Created by Alexandre 
-revolalex@gmail.com
+## Contact	
+- [![LinkedIn][linkedin-shield]][linkedin-url] 	
+- revolalex@gmail.com
+
+
+
+
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=flat-square&logo=linkedin&colorB=555
+[linkedin-url]: https://www.linkedin.com/in/alexandre-rodrigueza/
+
 
 
